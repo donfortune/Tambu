@@ -5,6 +5,7 @@ urlpatterns = [
     path('', views.getRoutes, name='routes'),
     path('api/businesses/', views.getBusinesses, name='businesses'),
     path('api/businesses/<int:id>/', views.getBusiness, name='business'),
+    path('api/businesses/create/', views.createBusiness, name='create-business'),
     path('api/businesses/<int:id>/reviews/', views.getReviews, name='business-reviews'),
     path('api/businesses/<int:id>/photos/', views.getPhotos, name='business-photos'),
     path('api/search/', views.searchBusinesses, name='search-businesses'),
@@ -14,6 +15,7 @@ urlpatterns = [
     path('api/reviews/<int:id>/delete/', views.deleteReview, name='delete-review'),
     path('api/users/', views.getUsers, name='users'),
     path('api/users/<int:id>/', views.getUser, name='user'),
-    
+    path('api/users/<int:id>/reviews/', views.getUserReview, name='user-review'),
+    path('api/users/<int:id>/photos/', views.getUserPhoto, name='user-photo'),
     
 ]

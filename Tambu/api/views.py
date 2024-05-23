@@ -84,6 +84,25 @@ def getBusiness(request, id):
     serializer = BusinessSerializer(business, many=False)
     return Response(serializer.data)
 
+@api_view(['POST'])
+def createBusiness(request):
+    data = request.data
+    business = Business.objects.create(
+        name=data['name'],
+        owner=data['owner'],
+        category=data['category'],
+        description=data['description'],
+        address=data['address'],
+        city=data['city'],
+        state=data['state'],
+        country=data['country'],
+        postal_code=data['postal_code'],
+        phone_number=data['phone_number'],
+        website=data['website']
+    )
+    serializer = BusinessSerializer(business, many=False)
+    return Response(serializer.data)
+
 @api_view(['GET'])
 def getReviews(request, id):
     #business = Business.objects.get(Business, id=id)
@@ -162,6 +181,20 @@ def getUser(request, id):
     user = User.objects.get(id=id)
     serializers = UserSerializer(user, many=False)
     return Response(serializers.data)
+
+@api_view(['GET'])
+def getUserReview(request, id):
+    user = User.objects.get(id=id)
+    reviews = user.reviews.all()
+    serializer = ReviewSerializer(reviews, many=True)
+    return Response(serializer.data)
+
+@api_view(['GET'])
+def getUserPhoto(request, id):
+    user = User.objects.get(id=id)
+    photos = user.photos.all()
+    serializer = PhotoSerializer(photos, many=True)
+    return Response(serializer.data)
 
 
 
