@@ -103,3 +103,66 @@ def searchBusinesses(request):
     businesses = Business.objects.filter(name__icontains=query)
     serializer = BusinessSerializer(businesses, many=True)
     return Response(serializer.data)
+
+@api_view(['POST'])
+def uploadPhoto(request, id):
+    business = Business.objects.get(id=id)
+    photo = request.data['photo']
+    photo = Photo.objects.create(
+        business=business,
+        image=photo
+    )
+    serializer = PhotoSerializer(photo, many=False)
+    return Response(serializer.data)
+
+
+@api_view(['POST'])
+def createReview(request):
+    data = request.data
+    business = Business.objects.get(id=data['business'])
+    user = User.objects.get(id=data['user'])
+    review = Review.objects.create(
+        user=user,
+        business=business,
+        rating=data['rating'],
+        title=data['title'],
+        body=data['body']
+    )
+    serializer = ReviewSerializer(review, many=False)
+    return Response(serializer.data)
+    
+
+@api_view(['PUT'])
+def updateReview(request, id):
+    review = Review.objects.get(id=id)
+    data = request.data
+    review.rating = data['rating']
+    review.title = data['title']
+    review.body = data['body']
+    review.save()
+    serializer = ReviewSerializer(review, many=False)
+    return Response(serializer.data)
+
+
+@api_view(['DELETE'])
+def deleteReview(request, id):
+    review = Review.objects.get(id=id)
+    review.delete()
+    return Response('Review deleted successfully')
+
+
+@api_view(['GET'])
+def getUsers(request):
+    users = User.objects.all()
+    serializer = UserSerializer(users, many=True)
+    return Response(serializer.data)
+
+@api_view(['GET'])
+def getUser(request, id):
+    user = User.objects.get(id=id)
+    serializers = UserSerializer(user, many=False)
+    return Response(serializers.data)
+
+
+
+
