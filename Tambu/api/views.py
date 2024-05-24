@@ -87,10 +87,12 @@ def getBusiness(request, id):
 @api_view(['POST'])
 def createBusiness(request):
     data = request.data
+    owner = User.objects.get(id=data['owner'])
+    category = Category.objects.get(id=data['category'])
     business = Business.objects.create(
         name=data['name'],
-        owner=data['owner'],
-        category=data['category'],
+        owner=owner,
+        category=category,
         description=data['description'],
         address=data['address'],
         city=data['city'],
@@ -196,6 +198,42 @@ def getUserPhoto(request, id):
     serializer = PhotoSerializer(photos, many=True)
     return Response(serializer.data)
 
+@api_view(['GET'])
+def getCategories(request):
+    categories = Category.objects.all()
+    serializer = CategorySerializer(categories, many=True)
+    return Response(serializer.data)
+
+@api_view(['GET'])
+def getBusinessCategory(request, id):
+    business = Business.objects.get(id=id)
+    category = business.category
+    serializer = CategorySerializer(category, many=False)
+    return Response(serializer.data)
+
+@api_view(['GET'])
+def getBusinessInCategory(request, id):
+    category = Category.objects.get(id=id)
+    businesses = category.businesses.all()
+    serializer = BusinessSerializer(businesses, many=True)
+    return Response(serializer.data)
+
+@api_view(['PUT'])
+def updateBusiness(request, id):
+    business = Business.objects.get(id=id)
+    data = request.data
+    business.name = data['name']
+    business.description = data['description']
+    business.address = data['address']
+    business.city = data['city']
+    business.state = data['state']
+    business.country = data['country']
+    business.postal_code = data['postal_code']
+    business.phone_number = data['phone_number']
+    business.website = data['website']
+    business.save()
+    serializer = BusinessSerializer(business, many=False)
+    return Response(serializer.data)
 
 
 
