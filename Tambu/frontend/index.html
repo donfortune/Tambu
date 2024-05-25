@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tambu - Find Local Businesses</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <img src="logo.png" alt="Tambu Logo" class="logo">
+            <div class="search-bar">
+                <input type="text" placeholder="things to do, nail salons, plumbers" id="search-input">
+                <input type="text" placeholder="San Francisco, CA" id="location-input">
+                <button onclick="search()">🔍</button>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#">Yelp for Business</a></li>
+                    <li><a href="#">Write a Review</a></li>
+                    <li><a href="#" id="signin-btn">Log In</a></li>
+                    <li><a href="#" id="signup-btn">Sign Up</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <main>
+        <div class="hero">
+            <h1>Show off your lawn this spring</h1>
+            <button>Landscapers</button>
+            <p>Nature's Friends Landscaping</p>
+            <p>Photo from the business owner</p>
+        </div>
+        <div class="recent-activity">
+            <h2>Recent Activity</h2>
+            <div class="activity-container">
+                <!-- Recent activity cards will be inserted here -->
+                <div class="activity-card">
+                    <div class="user-info">
+                        <img src="user1.jpg" alt="User Profile">
+                        <p>Alden C. added a photo</p>
+                        <span>10 minutes ago</span>
+                    </div>
+                    <div class="activity-content">
+                        <h3>Peet's Coffee</h3>
+                        <div class="rating">⭐⭐⭐ 10</div>
+                        <p>Coffee & Tea</p>
+                        <img src="peets-coffee.jpg" alt="Peet's Coffee">
+                    </div>
+                </div>
+                <div class="activity-card">
+                    <div class="user-info">
+                        <img src="user2.jpg" alt="User Profile">
+                        <p>Constanze B. added a photo</p>
+                        <span>13 minutes ago</span>
+                    </div>
+                    <div class="activity-content">
+                        <h3>The Tipsy Pig</h3>
+                        <div class="rating">⭐⭐⭐⭐ 1694</div>
+                        <p>Gastropubs, Bars, New American</p>
+                        <img src="tipsy-pig.jpg" alt="The Tipsy Pig">
+                    </div>
+                </div>
+                <div class="activity-card">
+                    <div class="user-info">
+                        <img src="user3.jpg" alt="User Profile">
+                        <p>Constanze B. wrote a review</p>
+                        <span>13 minutes ago</span>
+                    </div>
+                    <div class="activity-content">
+                        <h3>The Tipsy Pig</h3>
+                        <div class="rating">⭐⭐⭐⭐ 1694</div>
+                        <p>My friends and I drank one cocktail from this place called the bees knees (I think) and I honestly really...</p>
+                        <a href="#">Read more</a>
+                    </div>
+                </div>
+                <div class="activity-card">
+                    <div class="user-info">
+                        <img src="user2.jpg" alt="User Profile">
+                        <p>Constanze B. added a photo</p>
+                        <span>18 minutes ago</span>
+                    </div>
+                    <div class="activity-content">
+                        <h3>Inle Burmese Cuisine</h3>
+                        <div class="rating">⭐⭐⭐⭐ 244</div>
+                        <p>Burmese, Noodles, Thai</p>
+                        <img src="inle-burmese.jpg" alt="Inle Burmese Cuisine">
+                    </div>
+                </div>
+                <div class="activity-card">
+                    <div class="user-info">
+                        <img src="user3.jpg" alt="User Profile">
+                        <p>Constanze B. wrote a review</p>
+                        <span>18 minutes ago</span>
+                    </div>
+                    <div class="activity-content">
+                        <h3>Inle Burmese Cuisine</h3>
+                        <div class="rating">⭐⭐⭐⭐ 244</div>
+                        <p>Wonderful flavors and great ambiance...</p>
+                        <a href="#">Read more</a>
+                    </div>
+                </div>
+                <div class="activity-card">
+                    <div class="user-info">
+                        <img src="user4.jpg" alt="User Profile">
+                        <p>Kelly S. added 5 photos</p>
+                        <span>22 minutes ago</span>
+                    </div>
+                    <div class="activity-content">
+                        <h3>Neighbor Bakehouse</h3>
+                        <div class="rating">⭐⭐⭐⭐⭐ 1011</div>
+                        <p>Bakeries</p>
+                        <img src="neighbor-bakehouse.jpg" alt="Neighbor Bakehouse">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="categories">
+            <h2>Categories</h2>
+            <div class="categories-container">
+                <div class="category-card">
+                    <img src="restaurant-icon.png" alt="Restaurants">
+                    <p>Restaurants</p>
+                </div>
+                <div class="category-card">
+                    <img src="shopping-icon.png" alt="Shopping">
+                    <p>Shopping</p>
+                </div>
+                <div class="category-card">
+                    <img src="nightlife-icon.png" alt="Nightlife">
+                    <p>Nightlife</p>
+                </div>
+                <div class="category-card">
+                    <img src="active-life-icon.png" alt="Active Life">
+                    <p>Active Life</p>
+                </div>
+                <div class="category-card">
+                    <img src="beauty-icon.png" alt="Beauty & Spas">
+                    <p>Beauty & Spas</p>
+                </div>
+                <div class="category-card">
+                    <img src="automotive-icon.png" alt="Automotive">
+                    <p>Automotive</p>
+                </div>
+                <div class="category-card">
+                    <img src="home-services-icon.png" alt="Home Services">
+                    <p>Home Services</p>
+                </div>
+                <div class="category-card">
+                    <img src="more-icon.png" alt="More">
+                    <p>More</p>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <div class="footer-column">
+            <h3>About</h3>
+            <ul>
+                <li>About Yelp</li>
+                <li>Careers</li>
+                <li>Press</li>
+                <li>Investor Relations</li>
+                <li>Trust & Safety</li>
+                <li>Content Guidelines</li>
+                <li>Accessibility Statement</li>
+                <li>Terms of Service</li>
+                <li>Privacy Policy</li>
+                <li>Ad Choices</li>
+                <li>Your Privacy Choices</li>
+            </ul>
+        </div>
+        <div class="footer-column">
+            <h3>Discover</h3>
+            <ul>
+                <li>Yelp Project Cost Guides</li>
+                <li>Collections</li>
+                <li>Talk</li>
+                <li>Events</li>
+                <li>Yelp Blog</li>
+                <li>Support</li>
+                <li>Yelp Mobile</li>
+                <li>Developers</li>
+                <li>RSS</li>
+            </ul>
+        </div>
+        <div class="footer-column">
+            <h3>Yelp for Business</h3>
+            <ul>
+                <li>Yelp for Business</li>
+                <li>Business Owner Login</li>
+                <li>Claim your Business Page</li>
+                <li>Advertise on Yelp</li>
+                <li>Yelp for Restaurant Owners</li>
+                <li>Table Management</li>
+                <li>Business Success Stories</li>
+                <li>Business Support</li>
+                <li>Yelp Blog for Business</li>
+                <li>Yelp Data for B2B</li>
+                <li>Yelp Data for B2C</li>
+            </ul>
+        </div>
+        <div class="footer-column">
+            <h3>Languages</h3>
+            <ul>
+                <li>English</li>
+            </ul>
+            <h3>Cities</h3>
+            <ul>
+                <li>Explore a City</li>
+            </ul>
+        </div>
+        <p class="copyright">Copyright © 2004–2024 Yelp Inc. Yelp, Yelp , and related marks are registered trademarks of Yelp.</p>
+    </footer>
+     <!-- Sign Up Modal -->
+     <div id="signup-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <h2>Sign up for Yelp</h2>
+            <p>Connect with great local businesses</p>
+            <p>By proceeding, you agree to Yelp's <a href="#">Terms of Service</a> and acknowledge Yelp's <a href="#">Privacy Policy</a>.</p>
+            <button class="google-button">Continue with Google</button>
+            <button class="apple-button">Continue with Apple</button>
+            <button class="email-button">Continue with email</button>
+            <p>Already on Yelp? <a href="#">Log in</a></p>
+        </div>
+    </div>
+
+
+<!-- Sign In Modal -->
+    <div id="signin-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <h2>Sign in to Yelp</h2>
+            <p>Connect with great local businesses</p>
+            <p>By proceeding, you agree to Yelp's <a href="#">Terms of Service</a> and acknowledge Yelp's <a href="#">Privacy Policy</a>.</p>
+            <button class="google-button">Continue with Google</button>
+            <button class="apple-button">Continue with Apple</button>
+            <div class="or-divider">or</div>
+            <input type="email" placeholder="Email">
+            <input type="password" placeholder="Password">
+            <button class="login-button">Log in</button>
+            <a href="#">Login via email link</a>
+            <p>New to Yelp? <a href="#">Sign up</a></p>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
