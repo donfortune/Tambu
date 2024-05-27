@@ -44,3 +44,42 @@ document.getElementById('signup-btn').addEventListener('click', () => {
 document.getElementById('signin-btn').addEventListener('click', () => {
     openModal('signin-modal');
 });
+
+
+
+// Function to fetch categories from the API and display them
+function getCategories() {
+    fetch('/api/categories/')
+        .then(response => response.json())
+        .then(data => {
+            displayCategories(data);
+        })
+        .catch(error => console.error('Error fetching categories:', error));
+}
+
+// Function to display categories on the webpage
+function displayCategories(categories) {
+    const categoryContainer = document.querySelector('.categories-container');
+    categoryContainer.innerHTML = ''; // Clear existing content
+
+    categories.forEach(category => {
+        const categoryCard = document.createElement('div');
+        categoryCard.classList.add('category-card');
+
+        // Add category image
+        const categoryImage = document.createElement('img');
+        categoryImage.src = category.image; // Replace with your property name
+        categoryImage.alt = category.name; // Replace with your property name
+        categoryCard.appendChild(categoryImage);
+
+        // Add category name
+        const categoryName = document.createElement('p');
+        categoryName.textContent = category.name; // Replace with your property name
+        categoryCard.appendChild(categoryName);
+
+        categoryContainer.appendChild(categoryCard);
+    });
+}
+
+// Call getCategories when the DOM is fully loaded
+document.addEventListener('DOMContentLoaded', getCategories);
