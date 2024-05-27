@@ -235,5 +235,12 @@ def updateBusiness(request, id):
     serializer = BusinessSerializer(business, many=False)
     return Response(serializer.data)
 
+@api_view(['GET'])
+def recentReviews(request):
+    reviews = Review.objects.all().order_by('-created_at')
+    #business = Business.objects.get(id=id)
+    serializer = ReviewSerializer(reviews, many=True)
+    return Response(serializer.data)
+
 
 

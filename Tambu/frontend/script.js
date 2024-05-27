@@ -49,7 +49,7 @@ document.getElementById('signin-btn').addEventListener('click', () => {
 
 // Function to fetch categories from the API and display them
 function getCategories() {
-    fetch('/api/categories/')
+    fetch('http://127.0.0.1:8000/api/categories/')
         .then(response => response.json())
         .then(data => {
             displayCategories(data);
@@ -83,3 +83,103 @@ function displayCategories(categories) {
 
 // Call getCategories when the DOM is fully loaded
 document.addEventListener('DOMContentLoaded', getCategories);
+
+/* document.addEventListener('DOMContentLoaded', function() {
+    const recentActivityElement = document.getElementById('recent-activity');
+    if (recentActivityElement) {
+        fetch('http://127.0.0.1:8000/api/recent-reviews/')
+            .then(response => response.json())
+            .then(recentReviews => {
+                recentReviews.forEach(review => {
+                    const activityCard = document.createElement('div');
+                    activityCard.className = 'activity-card';
+
+                    const userInfo = document.createElement('div');
+                    userInfo.className = 'user-info';
+                    userInfo.innerHTML = `
+                        <img src="${review.user.profile_image}" alt="User Profile">
+                        <p>${review.user.username} added a review</p>
+                        <span>${getTimeAgo(review.created_at)}</span>
+                    `;
+
+                    const activityContent = document.createElement('div');
+                    activityContent.className = 'activity-content';
+                    activityContent.innerHTML = `
+                        <h3>${review.business.name}</h3>
+                        <div class="rating">${getStarRating(review.rating)} ${review.rating}</div>
+                        <p>${review.business.category}</p>
+                        <img src="${review.business.image}" alt="${review.business.name}">
+                    `;
+
+                    activityCard.appendChild(userInfo);
+                    activityCard.appendChild(activityContent);
+                    recentActivityElement.appendChild(activityCard);
+                });
+            })
+            .catch(error => console.error('Error fetching recent reviews:', error));
+    } else {
+        console.error('Element with ID "recent-activity" not found');
+    }
+
+    function getTimeAgo(dateString) {
+        // Calculate time difference between now and the provided date string
+        // and return a human-readable string like "X minutes ago", "X hours ago", etc.
+    }
+
+    function getStarRating(rating) {
+        // Convert numeric rating to star emojis or any other representation you prefer
+        // For example, if rating is 4, return '⭐⭐⭐⭐'
+    }
+}); */
+
+document.addEventListener('DOMContentLoaded', function() {
+    const recentActivityElements = document.getElementsByClassName('recent-activity');
+    if (recentActivityElements.length > 0) {
+        const recentActivityElement = recentActivityElements[0]; // Assuming you only have one element with the class "recent-activity"
+        fetch('http://127.0.0.1:8000/api/recent-reviews/')
+            .then(response => response.json())
+            .then(recentReviews => {
+                recentReviews.forEach(reviews => {
+                    const activityCard = document.createElement('div');
+                    activityCard.className = 'activity-card';
+
+                    const userInfo = document.createElement('div');
+                    userInfo.className = 'user-info';
+                    userInfo.innerHTML = `
+                        <img src="${reviews.user.profile_image}" alt="User Profile">
+                        <p>${reviews.user.username} added a review</p>
+                        <span>${getTimeAgo(reviews.created_at)}</span>
+                    `;
+
+                    const activityContent = document.createElement('div');
+                    activityContent.className = 'activity-content';
+                    activityContent.innerHTML = `
+                        <h3>${reviews.business.name}</h3>
+                        <h3>${reviews.body}</h3>
+                        <div class="rating">${getStarRating(reviews.rating)} ${reviews.rating}</div>
+                        <p>${reviews.business.category}</p>
+                        <img src="${reviews.business.image}" alt="${reviews.business.name}">
+                    `;
+
+                    activityCard.appendChild(userInfo);
+                    activityCard.appendChild(activityContent);
+                    recentActivityElement.appendChild(activityCard);
+                });
+            })
+            .catch(error => console.error('Error fetching recent reviews:', error));
+    } else {
+        console.error('Element with class "recent-activity" not found');
+    }
+
+    function getTimeAgo(dateString) {
+        // Calculate time difference between now and the provided date string
+        // and return a human-readable string like "X minutes ago", "X hours ago", etc.
+    }
+
+    function getStarRating(rating) {
+        // Convert numeric rating to star emojis or any other representation you prefer
+        // For example, if rating is 4, return '⭐⭐⭐⭐'
+    }
+});
+
+

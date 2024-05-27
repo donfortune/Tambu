@@ -27,5 +27,8 @@ urlpatterns = [
     path('api/users/<int:id>/', views.getUser, name='user'),
     path('api/users/<int:id>/reviews/', views.getUserReview, name='user-review'),
     path('api/users/<int:id>/photos/', views.getUserPhoto, name='user-photo'),
+
+
+    path('api/recent-reviews/', views.recentReviews, name='recent-reviews')
     
 ]

@@ -86,6 +86,7 @@ nav ul li a {
 
 .recent-activity {
     padding: 20px;
+    display: flex;
     background-color: #f9f9f9;
 }
 
@@ -94,10 +95,49 @@ nav ul li a {
     margin-bottom: 20px;
 }
 
+/* Grid layout for recent activity */
 .activity-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Three columns per row */
+    gap: 20px; /* Adjust the gap between items as needed */
+}
+
+/* Card styling similar to categories */
+.activity-card {
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 20px;
     display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.activity-card img {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-bottom: 10px;
+}
+
+.activity-card p, .activity-card h3, .activity-card span {
+    margin: 5px 0;
+}
+
+.activity-card .rating {
+    font-size: 1.2em;
+    color: #ffc107;
+    margin-bottom: 10px;
+}
+
+
+/* .activity-container {
+    display: grid;
     flex-wrap: wrap;
-    gap: 20px;
+    justify-content: space-between;
+    
 }
 
 .activity-card {
@@ -107,7 +147,8 @@ nav ul li a {
     overflow: hidden;
     width: calc(33.333% - 20px);
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
+    margin-bottom: 20px;
+} */
 
 .user-info {
     display: flex;
