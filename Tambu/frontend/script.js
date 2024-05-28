@@ -183,3 +183,24 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 
+document.getElementById('add-business-form').addEventListener('submit', function(event) {
+    event.preventDefault();
+    
+    const formData = new FormData(this);
+
+    fetch('http://127.0.0.1:8000/api/businesses/create/', {
+        method: 'POST',
+        body: formData
+    })
+    .then(response => response.json())
+    .then(data => {
+        alert('Business added successfully!');
+        this.reset(); // Reset the form after successful submission
+    })
+    .catch(error => {
+        console.error('Error adding business:', error);
+        alert('There was an error adding the business. Please try again.');
+    });
+});
+
+
